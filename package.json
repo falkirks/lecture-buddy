@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "express": "^4.15.2",
+    "npm-watch": "^0.1.8",
     "path": "^0.12.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -17,6 +18,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": "src/"
   }
 }
