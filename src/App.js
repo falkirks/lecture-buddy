@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {
+    SocketProvider,
+    socketConnect,
+} from 'socket.io-react';
+import io from 'socket.io-client';
+const socket = io.connect();
+socket.on('message', msg => console.log(msg));
+socket.emit('message', {'msg': "hello world"});
 
 class App extends Component {
   render() {

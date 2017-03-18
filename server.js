@@ -4,11 +4,12 @@ var path = require('path');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-app.use(express.static(path.join(__dirname, 'build')));
-
 app.get('/thing', function (req, res) {
     res.send('Hello World!')
 });
+
+app.use(express.static(path.join(__dirname, 'build')));
+
 
 io.on('connection', function(socket){
     console.log('a user connected');
@@ -30,11 +31,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err,
-            title: 'error'
-        });
+        res.json(err);
     });
 }
 
@@ -42,14 +39,10 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {},
-        title: 'error'
-    });
+    res.json(err);
 });
 
 
-app.listen(process.env.PORT || 3000, function () {
+http.listen(process.env.PORT || 3000, function () {
     console.log('RUNNING!')
 });
