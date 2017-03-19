@@ -10,6 +10,7 @@ export default class Join extends React.Component {
         this.state = {
             name: '',
             key: '',
+            question: '',
             buttons: [],
             open : false
         };
@@ -17,7 +18,10 @@ export default class Join extends React.Component {
 
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleQuestionChange = this.handleQuestionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.sendQuestion = this.sendQuestion.bind(this);
 
         this.buttonsSet = this.buttonsSet.bind(this);
         this.receiveName = this.receiveName.bind(this);
@@ -49,6 +53,14 @@ export default class Join extends React.Component {
         }
     }
 
+    sendQuestion(event){
+        if(this.state.question != ''){
+            window.socket.emit('question', {text: this.state.question});
+            this.setState({question: ''});
+        }
+        event.preventDefault();
+    }
+
     collapse(data){
         this.handleTouchTap();
         /*alert("That wasn't valid.");*/
@@ -59,6 +71,10 @@ export default class Join extends React.Component {
 
     handleChange(event) {
         this.setState({key: event.target.value});
+    }
+
+    handleQuestionChange(event) {
+        this.setState({question: event.target.value});
     }
 
     handleSubmit(event) {
@@ -105,6 +121,13 @@ export default class Join extends React.Component {
                                 < Click name={btn} />
                             ))}
                         </div>
+                        <br/>
+                        <form onSubmit={this.sendQuestion}>
+                            <label>
+                                <TextField hintText="" value={this.state.question} onChange={this.handleQuestionChange}/>
+                            </label>
+                            <RaisedButton label="Send" type="submit" value=""/>
+                        </form>
                     </div>
                 </div>
             );
