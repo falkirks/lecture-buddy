@@ -1,4 +1,5 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default class Create extends React.Component {
     constructor(props) {
@@ -55,7 +56,7 @@ export default class Create extends React.Component {
                         Name:
                         <input type="text" value={this.state.name} onChange={this.handleChange}/>
                     </label>
-                    <input type="submit" value="Create lecture"/>
+                    <RaisedButton label="SHIT" type="submit" value="Create lecture"/>
                 </form>
             );
         }

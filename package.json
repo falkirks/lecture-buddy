@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "express": "^4.15.2",
+    "material-ui": "^0.17.1",
     "npm-watch": "^0.1.8",
     "path": "^0.12.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-scripts": "0.9.4",
+    "react-tap-event-plugin": "^2.0.1",
     "shortid": "^2.2.8",
     "socket.io": "^1.7.3",
     "socket.io-react": "^1.1.2"

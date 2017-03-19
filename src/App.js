@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Home from './Home';
 import Create from './Create';
 import Join from './Join';
@@ -29,11 +30,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-          {this.state.pageId == 'home' ? <Home onItemSelect={this._onItemSelect} /> : ''}
-          {this.state.pageId == 'join' ? <Join onItemSelect={this._onItemSelect} /> : ''}
-          {this.state.pageId == 'create' ? <Create onItemSelect={this._onItemSelect} /> : ''}
-      </div>
+        <MuiThemeProvider>
+          <div className="container">
+                  {this.state.pageId == 'home' ? <Home onItemSelect={this._onItemSelect} /> : ''}
+                  {this.state.pageId == 'join' ? <Join onItemSelect={this._onItemSelect} /> : ''}
+                  {this.state.pageId == 'create' ? <Create onItemSelect={this._onItemSelect} /> : ''}
+          </div>
+        </MuiThemeProvider>
     );
   }
 }
