@@ -112,13 +112,12 @@ div span{
 }
 
 .options-container {
-    margin-top: 55px!important;
+    margin-top: 80px!important;
     margin-bottom: 10px !important;
     display: block!important;
     height: 75vh!important;
     width: 50vw!important;
     margin: 0 auto;
-    overflow: hidden;
 }
 
 .gen-container {
@@ -126,6 +125,7 @@ div span{
     overflow-y: scroll !important;
     height: 62vh !important;
     width: 100% !important;
+    overflow: hidden;
 }
 
 .app-bar{
@@ -135,6 +135,10 @@ div span{
 
 .ok-button div span{
   color: #00bcd4;
+}
+
+.info{
+  margin: 10px;
 }
 /*-----------MEDIA-----------*/
 @media screen and (max-width:490px) {

@@ -6,6 +6,7 @@ import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import LinearProgress from 'material-ui/LinearProgress';
 import Dialog from 'material-ui/Dialog';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 
 import Snackbar from 'material-ui/Snackbar';
 
@@ -211,6 +212,8 @@ export default class Create extends React.Component {
             width: '100%'
         };
 
+        var studentLang = (this.state.students == 1 ? "participant" : "participants");
+
         var validClicks = [];
         for(var i = 0; i < this.state.buttons.length; i++){
             validClicks.push({name: this.state.buttons[i], amount: 0});
@@ -232,6 +235,7 @@ export default class Create extends React.Component {
                 <header2>Lecture Buddy</header2>
                 <div className="options-container">
                     <h1 style={{textAlign:'center',width:'100%'}}>Code  <code>{this.state.key}</code></h1>
+                    <i>{this.state.students} {studentLang} joined</i>
                     <div className="gen-container">
                         {validClicks.map((click) => (
                             <div>
