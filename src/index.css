@@ -129,4 +129,8 @@ div span{
   .topic{
     margin-left: 0;
   }
+  .gen-container{
+    width:80%;
+    margin: 0 auto;
+  }
 }

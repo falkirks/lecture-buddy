@@ -208,7 +208,7 @@ export default class Create extends React.Component {
             <div>
                 <header2>Lecture Buddy</header2>
                 <h1>Code  <code>{this.state.key}</code></h1>
-                <div>
+                <div className="gen-container">
                     {validClicks.map((click) => (
                         <div>
                             <AppBar
