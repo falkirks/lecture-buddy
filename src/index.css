@@ -132,5 +132,10 @@ div span{
   .gen-container{
     width:80%;
     margin: 0 auto;
+    z-index:0;
+  }
+  .app-bar{
+    width: 80vh;
+    margin: 0 auto;
   }
 }

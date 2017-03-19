@@ -211,7 +211,7 @@ export default class Create extends React.Component {
                 <div className="gen-container">
                     {validClicks.map((click) => (
                         <div>
-                            <AppBar
+                            <AppBar className="app-bar"
                                 title={<span>{click.name}</span>}
                                 iconElementRight={<span> <IconButton><NavigationClose /></IconButton></span>}
                                 onRightIconButtonTouchTap={(function(event){ this.removeQuestion(click.name) }).bind(this)}
