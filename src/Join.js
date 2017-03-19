@@ -108,7 +108,7 @@ export default class Join extends React.Component {
             'flex-direction': 'column',
             width: '100%'
         };
-        
+
 
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
@@ -149,7 +149,7 @@ export default class Join extends React.Component {
                     <label>
                         <TextField style={{margin:5,height:50,fontSize:30,lineHeight:1}} hintText="Lecture Key" value={this.state.key} onChange={this.handleChange}/>
                     </label>
-                    <RaisedButton style={{margin:5,height:50,fontWeight:700}} label="Join" type="submit" value="Join lecture"/>
+                    <RaisedButton style={{margin:5,height:50,fontWeight:700}} primary={true} label="Join" type="submit" value="Join lecture"/>
                 </form>
                 </div>
             </div>
