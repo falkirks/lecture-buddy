@@ -82,7 +82,7 @@ io.on('connection', function(socket){
         }
     });
     socket.on('disconnect', function(){
-        if(socket == lectures[room].owner){
+        if(room != null && socket == lectures[room].owner){
             socket.to(room).emit('collapse', {});
         }
     });
