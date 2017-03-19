@@ -8,8 +8,36 @@ body {
   height: 100vh;
   align-items: center;
   justify-content: center;
-  font-family: sans-serif;
-  background: #f1efef;
+  font-family: 'Raleway', sans-serif;
+  background: transparent;
+}
+
+.root{
+  margin: 0px;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Raleway',sans-serif;
+  background: transparent;
+}
+cover{
+  margin: 0px;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(/lecturepic.png);
+  background-size: cover;
+  filter: blur(1px);
+}
+
+.topic{
+  padding: 10px;
+  margin-left: 15px;
+  font-size: 40px;
+  font-weight: 700;
+  width:100%;
+  text-align: center;
 }
 
 a {
@@ -17,25 +45,39 @@ a {
   color: #ffffff;
 }
 
+p{
+  margin:0;
+}
 
 header {
+  display: flex;
   position: fixed; 
   right: 0;
   top: 0;
   left: 0;
   padding: 1rem;
-  background-color:lightseagreen;
+  background-color: transparent;
+  align-items: center;
   z-index:10;
+  color: #fff;/*#009688;*/
+  height: 310px;
 }
 logo svg{
   height: 30px;
   width: 30px;
 }
-
 .container{
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100vh;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
 }

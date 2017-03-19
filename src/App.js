@@ -33,12 +33,7 @@ class App extends React.Component {
         <MuiThemeProvider>
           <div className="container">
             <header>
-                <logo>
-                    <img href="url(/logo.png)"/>
-                </logo>
-                <center>
-                <p><font size="7" face="futura" color="white">Lecture Buddy</font></p>
-                </center>
+               <b className="topic">Lecture Buddy</b>
             </header>
             {this.state.pageId == 'home' ? <Home onItemSelect={this._onItemSelect} /> : ''}
             {this.state.pageId == 'join' ? <Join onItemSelect={this._onItemSelect} /> : ''}
