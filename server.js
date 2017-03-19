@@ -82,10 +82,10 @@ io.on('connection', function(socket){
     });
     socket.on('question', function(data){
         if(data.text != null && lectures[room] != null){
-            if(Date.now() - RATE_LIMIT >= lastClick) {
-                lectures[room].owner.emit('question', {text: data.name});
-                lastClick = Date.now();
-            }
+            //if(Date.now() - RATE_LIMIT >= lastClick) {
+                lectures[room].owner.emit('question', {text: data.text});
+                //lastClick = Date.now();
+            //}
         }
     });
     socket.on('disconnect', function(){
