@@ -283,7 +283,7 @@ export default class Create extends React.Component {
         else{
             return (
                 <div>
-                <header2>Lecture Buddy</header2>
+                <header2 onClick={e => this.props.onItemSelect('home')}>Lecture Buddy</header2>
                 <div className="join-state">
                 <form onSubmit={this.handleSubmit}>
                     <label>

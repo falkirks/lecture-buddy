@@ -135,7 +135,7 @@ export default class Join extends React.Component {
         else{
             return (
             <div>
-                <header2>Lecture Buddy</header2>
+                <header2 onClick={e => this.props.onItemSelect('home')}>Lecture Buddy</header2>
                 <div className="join-state">
                     <Snackbar
                         open={this.state.open}
