@@ -3,13 +3,35 @@ html {
   margin: 0;
 }
 body {
-  margin: 50;
-  padding: 0;
+  margin: 0px;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
   font-family: sans-serif;
-
+  background: #f1efef;
 }
 
 a {
   text-decoration: none;
   color: #000000;
+}
+
+
+header {
+  position: fixed; 
+  right: 0;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  background-color:lightseagreen;
+  z-index:10;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vh;
 }
