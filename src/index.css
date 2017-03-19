@@ -7,10 +7,12 @@ body {
   margin: 0px;
   display: flex;
   height: 100vh;
+  width: 100vw;
   align-items: center;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
   background: lightgray;
+  overflow: hidden;
 }
 
 cover {
@@ -90,9 +92,20 @@ header2{
 .join-state{
   z-index: 100;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
-.app-button{
-  height: 20px;
-  width:200; 
+form{
+  display: flex;
+  flex-direction: column;
+}
+
+/*-----------MEDIA-----------*/
+@media screen and (max-width:490px) {
+  html,header,cover, body {
+    width:100vw;
+    padding:0;
+    overflow: hidden;
+  }
 }
