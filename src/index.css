@@ -111,6 +111,12 @@ div span{
   font-weight: 700 !important;
 }
 
+.gen-container div{
+  display: block !important;
+  overflow-y: scroll !important;
+  height: 50vh;
+}
+
 /*-----------MEDIA-----------*/
 @media screen and (max-width:490px) {
   html,cover, body {
@@ -130,12 +136,13 @@ div span{
     margin-left: 0;
   }
   .gen-container{
-    width:80%;
+    width:90%;
     margin: 0 auto;
     z-index:0;
   }
   .app-bar{
-    width: 80vh;
+    max-width: 90%;
     margin: 0 auto;
+    font-size: 18px;
   }
 }
