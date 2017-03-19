@@ -50,7 +50,7 @@ io.on('connection', function(socket){
         if(data.key != null){
             if(lectures[data.key]){
                 socket.join(data.key);
-                room = key;
+                room = data.key;
                 socket.emit('set-buttons', {buttons: DEFAULT_BUTTONS});
             }
             else{
