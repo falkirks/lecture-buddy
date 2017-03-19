@@ -115,7 +115,7 @@ div span{
     margin-top: 55px!important;
     margin-bottom: 10px !important;
     display: block!important;
-    height: 80vh!important;
+    height: 75vh!important;
     width: 50vw!important;
     margin: 0 auto;
     overflow: hidden;
@@ -133,9 +133,6 @@ div span{
   z-index: 0 !important;
 }
 
-.dialog {
-  color: #00bcd4 !important;
-}
 /*-----------MEDIA-----------*/
 @media screen and (max-width:490px) {
   html,cover, body {
