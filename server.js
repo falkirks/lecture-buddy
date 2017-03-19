@@ -14,7 +14,7 @@ const DEFAULT_BUTTONS = [
     "The last slide made no sense.",
     "Nice hair!"
 ];
-const RATE_LIMIT = 30*1000;
+const RATE_LIMIT = 20*1000;
 
 var lectures = {};
 

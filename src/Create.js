@@ -26,7 +26,7 @@ export default class Create extends React.Component {
             newQuestion : null,
             open : false
         };
-        this.DISPLAY_DIST = 20*1000;
+        this.DISPLAY_DIST = 15*1000;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -121,6 +121,7 @@ export default class Create extends React.Component {
             this.setState({
                 questions: questions
             });
+            alert(data.text);
         }
         else{
             alert("YOU FUCKED UP!");
