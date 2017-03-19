@@ -31,7 +31,7 @@ io.on('connection', function(socket){
     var room;
     var lastClick = 0;
     socket.on('create', function(data){
-        if(data.name != null){ // add && data.geo != null
+        if(data.name != null && data.name != ''){ // add && data.geo != null
             var key = generateKey();
             lectures[key] = {
                 owner: socket,
