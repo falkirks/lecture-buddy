@@ -7,6 +7,7 @@ export default class Create extends React.Component {
         this.state = {
             name: '',
             key: '',
+            buttons: [],
             clicks: {},
             clickLog: [],
             questions: []
@@ -18,8 +19,10 @@ export default class Create extends React.Component {
         this.keySubmit = this.keySubmit.bind(this);
         this.buttonPressed = this.buttonPressed.bind(this);
         this.questionGot = this.questionGot.bind(this);
+        this.buttonsSet = this.buttonsSet.bind(this);
 
         window.socket.on('set-key', this.keySubmit);
+        window.socket.on('set-buttons', this.buttonsSet);
         window.socket.on('button', this.buttonPressed);
         window.socket.on('question', this.questionGot);
 
@@ -75,6 +78,17 @@ export default class Create extends React.Component {
         }
     }
 
+    buttonsSet(data){
+        if(data.buttons != null) {
+            this.setState({
+                buttons: data.buttons
+            });
+        }
+        else{
+            alert("YOU FUCKED UP!");
+        }
+    }
+
     handleChange(event) {
         this.setState({name: event.target.value});
     }
@@ -88,7 +102,7 @@ export default class Create extends React.Component {
     }
 
     render() {
-        if(this.state.name != '' && this.state.key != '') {
+        if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (<b>WE GOT DAT KEY AND ITS {this.state.key}</b>);
         }
         else{
