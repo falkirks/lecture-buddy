@@ -111,7 +111,7 @@ div span{
   font-weight: 700 !important;
 }
 
-.gen-container div{
+.gen-container{
   display: block !important;
   overflow-y: scroll !important;
   height: 50vh;
