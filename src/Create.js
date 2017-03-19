@@ -72,7 +72,6 @@ export default class Create extends React.Component {
     }
 
     addQuestion(name) {
-        console.log("CALLL");
         var buttons = this.state.buttons;
         buttons.push(name);
         this.setState({
@@ -158,7 +157,6 @@ export default class Create extends React.Component {
 
     handleNewQuestion(event) {
         this.setState({newQuestion: event.target.value});
-        console.log(this.state.newQuestion);
     }
 
 
@@ -194,33 +192,18 @@ export default class Create extends React.Component {
         var style = {
             height: '20px'
         };
-        var style2 = {
-
-        };
-        var style3 = {
-
-        };
-
 
         var validClicks = [];
         for(var i = 0; i < this.state.buttons.length; i++){
             validClicks.push({name: this.state.buttons[i], amount: 0});
         }
         for(i = 0; i < this.state.clickLog.length; i++){
-            console.log(this.state.clickLog[i]);
             if(this.state.clickLog[i].time + this.DISPLAY_DIST >= Date.now()){
                 validClicks[this.state.buttons.indexOf(this.state.clickLog[i].name)].amount++;
             }
         }
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
-
-
-
-
-
-
-
 
             <div>
                 <header2>Lecture Buddy</header2>
@@ -229,11 +212,10 @@ export default class Create extends React.Component {
                     {validClicks.map((click) => (
                         <div>
                             <AppBar
-                                title={<span style={style3}>{click.name}</span>}
-                                iconElementRight={<span style={style3}> <IconButton><NavigationClose /></IconButton></span>}
+                                title={<span>{click.name}</span>}
+                                iconElementRight={<span> <IconButton><NavigationClose /></IconButton></span>}
                                 onRightIconButtonTouchTap={(function(event){ this.removeQuestion(click.name) }).bind(this)}
                                 iconElementLeft={<span></span>}
-                                style={style2}
                             />
                             <LinearProgress color="#FF4081" mode="determinate" value={click.amount} max={this.state.students} style={style} />
                             <br />
@@ -263,18 +245,6 @@ export default class Create extends React.Component {
                         />
                     </Dialog>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
             </div>);
         }
