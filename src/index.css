@@ -115,7 +115,7 @@ div span{
     margin-top: 55px!important;
     margin-bottom: 10px !important;
     display: block!important;
-    height: 75vh!important;
+    height: 50vh!important;
     width: 50vw!important;
     margin: 0 auto;
     overflow: hidden;
@@ -133,7 +133,41 @@ div span{
   z-index: 0 !important;
 }
 
+.ok-button div span{
+  color: #00bcd4;
+}
+
+/*Scroll bar*/
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.8); 
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.5); 
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgb(255, 255, 255, 0.5); 
+}
+
 /*-----------MEDIA-----------*/
+@media screen and (max-width:490px) {
+  .options-container{
+    width: 75vw!important;
+  }
+  div span{
+    font-weight: 400 !important;
+    font-size: 18px;
+  }
+}
 @media screen and (max-width:490px) {
   html,cover, body {
     width:100vw;
