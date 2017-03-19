@@ -111,19 +111,21 @@ div span{
   font-weight: 700 !important;
 }
 
-.options-container{
-  margin-top: 50px !important;
-  display: block !important;
-  height: 70vh !important;
-  width: 80vw !important;
-  margin: 0 auto;
+.options-container {
+    margin-top: 80px!important;
+    margin-bottom: 10px !important;
+    display: block!important;
+    height: 75vh!important;
+    width: 90vw!important;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-.gen-container{
-  display: block !important;
-  overflow-y: scroll !important;
-  height: 50vh !important;
-  width: 100% !important;
+.gen-container {
+    display: block!important;
+    overflow-y: scroll!important;
+    height: 60vh !important;
+    width: 100%!important;
 }
 
 .app-bar{
@@ -149,13 +151,11 @@ div span{
     margin-left: 0;
   }
   .gen-container{
-    width:80%;
     margin: 0 auto;
     z-index:0;
   }
-  .app-bar{
-    max-width: 80%;
-    margin: 0 auto;
+  div span{
+    font-weight: 400;
     font-size: 18px;
   }
 }

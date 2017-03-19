@@ -206,7 +206,7 @@ export default class Create extends React.Component {
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
 
-            <div>
+            <div style={{width:'100vw',height:'100vh'}}>
                 <header2>Lecture Buddy</header2>
                 <div className="options-container">
                     <h1 style={{textAlign:'center',width:'100%'}}>Code  <code>{this.state.key}</code></h1>
