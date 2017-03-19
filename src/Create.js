@@ -5,6 +5,12 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import LinearProgress from 'material-ui/LinearProgress';
+import Dialog from 'material-ui/Dialog';
+
+import FlatButton from 'material-ui/FlatButton';
+
+
+import AddBox from 'material-ui/svg-icons/content/add-box';
 
 export default class Create extends React.Component {
     constructor(props) {
@@ -16,19 +22,24 @@ export default class Create extends React.Component {
             clicks: {},
             clickLog: [],
             questions: [],
-            students: 0
+            students: 0,
+            newQuestion : null,
+            open : false
         };
         this.DISPLAY_DIST = 20*1000;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.removeQuestion = this.removeQuestion.bind(this);
+        this.addQuestion = this.addQuestion.bind(this);
+        this.handleNewQuestion = this.handleNewQuestion.bind(this);
 
         this.keySubmit = this.keySubmit.bind(this);
         this.buttonPressed = this.buttonPressed.bind(this);
         this.questionGot = this.questionGot.bind(this);
         this.buttonsSet = this.buttonsSet.bind(this);
         this.changeStudent = this.changeStudent.bind(this);
+
 
         window.socket.on('set-key', this.keySubmit);
         window.socket.on('set-buttons', this.buttonsSet);
@@ -57,6 +68,18 @@ export default class Create extends React.Component {
             });
             window.socket.emit('set-buttons', {buttons: buttons});
         }
+        console.log(name);
+    }
+
+    addQuestion(name) {
+        console.log("CALLL");
+        var buttons = this.state.buttons;
+        buttons.push(name);
+        this.setState({
+            buttons: buttons,
+            newQuestion: ""
+        });
+        window.socket.emit('set-buttons', {buttons: buttons});
         console.log(name);
     }
 
@@ -133,6 +156,11 @@ export default class Create extends React.Component {
         this.setState({name: event.target.value});
     }
 
+    handleNewQuestion(event) {
+        this.setState({newQuestion: event.target.value});
+        console.log(this.state.newQuestion);
+    }
+
 
 
     handleSubmit(event) {
@@ -143,7 +171,26 @@ export default class Create extends React.Component {
         event.preventDefault();
     }
 
+    handleOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
     render() {
+        const actions = [
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onTouchTap={(function() {
+                    this.handleClose();
+                    this.addQuestion(this.state.newQuestion);
+                }).bind(this)}
+            />,
+        ];
         var style = {
             height: '20px'
         };
@@ -167,6 +214,14 @@ export default class Create extends React.Component {
         }
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
+
+
+
+
+
+
+
+
             <div>
                 <header2>Lecture Buddy</header2>
                 <h1>WE GOT DAT KEY AND ITS {this.state.key}</h1>
@@ -185,6 +240,42 @@ export default class Create extends React.Component {
                         </div>
                     ))}
                 </div>
+                <div>
+                    <IconButton tooltip="SVG Icon">
+                        <AddBox onTouchTap= {this.handleOpen}/>
+                    </IconButton>
+                </div>
+
+
+
+                <div>
+                    <Dialog
+                        title="New Button"
+                        actions={actions}
+                        modal={false}
+                        open={this.state.open}
+                        onRequestClose={this.handleClose}>
+                        <TextField
+                        hintText="your text"
+                        value={this.state.newQuestion}
+
+                        onChange={this.handleNewQuestion}
+                        />
+                    </Dialog>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>);
         }
         else{
