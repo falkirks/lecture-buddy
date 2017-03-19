@@ -8,8 +8,14 @@ body {
   height: 100vh;
   align-items: center;
   justify-content: center;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: #f1efef;
+}
+
+.topic{
+  padding: 10px;
+  margin-left: 15px;
+  font-size: 20px;
 }
 
 a {
@@ -17,21 +23,26 @@ a {
   color: #ffffff;
 }
 
+p{
+  margin:0;
+}
 
 header {
+  display: flex;
   position: fixed; 
   right: 0;
   top: 0;
   left: 0;
   padding: 1rem;
-  background-color:lightseagreen;
+  background-color: transparent;
+  align-items: center;
   z-index:10;
+  color: #009688;
 }
 logo svg{
   height: 30px;
   width: 30px;
 }
-
 .container{
   display: flex;
   align-items: center;
