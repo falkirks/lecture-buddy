@@ -52,6 +52,9 @@ io.on('connection', function(socket){
                 socket.join(data.key);
                 room = data.key;
                 socket.emit('set-buttons', {buttons: DEFAULT_BUTTONS});
+                socket.emit('set-name', {
+                    name: lectures[data.key].name
+                });
             }
             else{
                 socket.emit('collapse');
