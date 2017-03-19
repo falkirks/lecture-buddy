@@ -36,7 +36,9 @@ class App extends React.Component {
                 <logo>
                     <img href="url(/logo.png)"/>
                 </logo>
-                <p>Lecture Buddy</p>
+                <center>
+                <p><font size="7" face="futura" color="white">Lecture Buddy</font></p>
+                </center>
             </header>
             {this.state.pageId == 'home' ? <Home onItemSelect={this._onItemSelect} /> : ''}
             {this.state.pageId == 'join' ? <Join onItemSelect={this._onItemSelect} /> : ''}
