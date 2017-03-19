@@ -119,7 +119,7 @@ export default class Create extends React.Component {
                     <label>
                         <TextField hintText="Lecture Name" value={this.state.name} onChange={this.handleChange}/>
                     </label>
-                    <RaisedButton label="SHIT" type="submit" value="Create lecture"/>
+                    <RaisedButton label="Create" type="submit" value="Create lecture"/>
                 </form>
 
             );
