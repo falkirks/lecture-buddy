@@ -1,6 +1,7 @@
 html {
   padding: 0;
   margin: 0;
+  font-family: 'Raleway', sans-serif;
 }
 
 body {
@@ -11,7 +12,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
-  background: lightgray;
+  background: linear-gradient(rgba(196,196,196,0.8) -400%,rgba(211,211,211,0.8));
   overflow: hidden;
 }
 
@@ -66,11 +67,13 @@ header2{
   top: 0;
   left: 0;
   padding: 1rem;
-  background-color:lightseagreen;
+  background-color: rgba(21,165,151,1);
   color: #fff;
   font-weight: 500;
   font-size: 20px;
   z-index:10;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),
+                0 2px 5px 0 rgba(0,0,0,0.19);
 }
 
 .container{
@@ -101,11 +104,29 @@ form{
   flex-direction: column;
 }
 
+button div{
+  color: #fff !important;
+}
+div span{
+  font-weight: 700 !important;
+}
+
 /*-----------MEDIA-----------*/
 @media screen and (max-width:490px) {
-  html,header,cover, body {
+  html,cover, body {
     width:100vw;
     padding:0;
     overflow: hidden;
+  }
+  header{
+    width: 100vw;
+    padding:0;
+    height: 200px
+  }
+  header2{
+    z-index: 1000;
+  }
+  .topic{
+    margin-left: 0;
   }
 }

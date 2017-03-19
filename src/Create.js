@@ -178,9 +178,6 @@ export default class Create extends React.Component {
     };
 
     render() {
-        const style1 = {margin:5,height:50,fontSize:30,lineHeight:1}
-        const style2 = {margin:5,height:50}
-
         const actions = [
             <FlatButton
                 label="Ok"
@@ -258,9 +255,9 @@ export default class Create extends React.Component {
                 <div className="join-state">
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        <TextField style={style1} hintText="Lecture Name" value={this.state.name} onChange={this.handleChange}/>
+                        <TextField style={{margin:5,height:50,fontSize:30,lineHeight:1}} hintText="Lecture Name" value={this.state.name} onChange={this.handleChange}/>
                     </label>
-                    <RaisedButton style={style2} label="Create" type="submit" value="Create lecture"/>
+                    <RaisedButton style={{margin:5,height:50,fontWeight:700}} label="Create" type="submit" value="Create lecture"/>
                 </form>
                 </div>
                 </div>

@@ -18,7 +18,7 @@ export default class Home extends React.Component {
             </header>
         <div className="home-buttons">
             <RaisedButton  backgroundColor='#f44336' labelColor='#ffffff' style={style} onClick={e => this.props.onItemSelect('join')}>Join</RaisedButton>
-            <RaisedButton  backgroundColor='#26a69a' labelColor='#ffffff' style={style}  onClick={e => this.props.onItemSelect('create')}>Create</RaisedButton>
+            <RaisedButton  backgroundColor='#26a69a' fontColor='#ffffff' style={style}  onClick={e => this.props.onItemSelect('create')}>Create</RaisedButton>
         </div>
         <cover></cover>
         </div>

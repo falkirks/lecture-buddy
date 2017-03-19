@@ -123,9 +123,9 @@ export default class Join extends React.Component {
 
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        <TextField style={{margin:5, height:50, fontSize:30, lineHeight:1}} hintText="Lecture Key" value={this.state.key} onChange={this.handleChange}/>
+                        <TextField style={{margin:5,height:50,fontSize:30,lineHeight:1}} hintText="Lecture Key" value={this.state.key} onChange={this.handleChange}/>
                     </label>
-                    <RaisedButton style={{margin:5,height:50}} label="Join" type="submit" value="Join lecture"/>
+                    <RaisedButton style={{margin:5,height:50,fontWeight:700}} label="Join" type="submit" value="Join lecture"/>
                 </form>
                 </div>
             </div>
