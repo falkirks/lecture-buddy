@@ -194,10 +194,6 @@ export default class Create extends React.Component {
     }
 
     render() {
-        const style3 = {
-        width: '20px',
-        height: '20px'
-        };
         const actions = [
             <FlatButton
                 className='ok-button'
@@ -233,7 +229,7 @@ export default class Create extends React.Component {
             return (
 
             <div style={{width:'100vw',height:'100vh'}}>
-                <header2><img src="logo.png" style={style3}/>Lecture Buddy</header2>
+                <header2>Lecture Buddy</header2>
                 <div className="options-container">
                     <h1 style={{textAlign:'center',width:'100%'}}>Code  <code>{this.state.key}</code></h1>
                     <div className="gen-container">

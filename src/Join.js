@@ -108,16 +108,12 @@ export default class Join extends React.Component {
             'flex-direction': 'column',
             width: '100%'
         };
-
-        const style3 = {
-            width: '20px',
-            height: '20px'
-        };
+        
 
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
                 <div>
-                    <header2><img src="logo.png" style={style3}/>Lecture Buddy</header2>
+                    <header2>Lecture Buddy</header2>
                     <div className="join-state">
                         <h1>{this.state.name}</h1>
                         <br/>
