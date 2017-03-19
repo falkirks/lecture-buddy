@@ -78,6 +78,10 @@ export default class Create extends React.Component {
                 clicks: clicks,
                 clickLog: clickLog
             });
+
+            setTimeout((function () {
+                this.setState({});
+            }).bind(this), this.DISPLAY_DIST + 5);
         }
         else{
             alert("YOU FUCKED UP!");
