@@ -85,7 +85,7 @@ io.on('connection', function(socket){
         }
     });
     socket.on('disconnect', function(){
-        if(room != null && socket == lectures[room].owner){
+        if(room != null && lectures[room] != null && socket == lectures[room].owner){
             socket.to(room).emit('collapse', {});
             lectures[room] = undefined;
         }
