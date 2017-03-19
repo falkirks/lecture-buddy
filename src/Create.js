@@ -162,7 +162,9 @@ export default class Create extends React.Component {
             }
         }
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
-            return (<div>
+            return (
+            <div>
+                <header2>Lecture Buddy</header2>
                 <h1>WE GOT DAT KEY AND ITS {this.state.key}</h1>
                 <div>
                     {validClicks.map((click) => (
@@ -183,6 +185,8 @@ export default class Create extends React.Component {
         }
         else{
             return (
+                <div>
+                <header2>Lecture Buddy</header2>
                 <div className="join-state">
                 <form onSubmit={this.handleSubmit}>
                     <label>
@@ -191,7 +195,7 @@ export default class Create extends React.Component {
                     <RaisedButton label="Create" type="submit" value="Create lecture"/>
                 </form>
                 </div>
-
+                </div>
             );
         }
     }

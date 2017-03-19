@@ -88,6 +88,8 @@ export default class Join extends React.Component {
     }
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
+                <div>
+                <header2>Lecture Buddy</header2>
                 <div className="container">
                     <b>WE JOINED AND ITS {this.state.name}</b>
 
@@ -99,13 +101,14 @@ export default class Join extends React.Component {
                             ))}
                         </ul>
                     </div>
-
-
+                </div>
                 </div>
             );
         }
         else{
             return (
+            <div>
+                <header2>Lecture Buddy</header2>
                 <div className="join-state">
                     <Snackbar
                         open={this.state.open}
@@ -121,6 +124,7 @@ export default class Join extends React.Component {
                     <RaisedButton label="Join" type="submit" value="Join lecture"/>
                 </form>
                 </div>
+            </div>
             );
         }
     }

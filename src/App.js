@@ -32,9 +32,6 @@ class App extends React.Component {
     return (
         <MuiThemeProvider>
           <div className="container">
-            <header>
-               <b className="topic">Lecture Buddy</b>
-            </header>
             {this.state.pageId == 'home' ? <Home onItemSelect={this._onItemSelect} /> : ''}
             {this.state.pageId == 'join' ? <Join onItemSelect={this._onItemSelect} /> : ''}
             {this.state.pageId == 'create' ? <Create onItemSelect={this._onItemSelect} /> : ''}
