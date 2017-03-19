@@ -50,8 +50,11 @@ io.on('connection', function(socket){
         if(data.key != null){
             if(lectures[data.key]){
                 socket.join(data.key);
-                room = key;
+                room = data.key;
                 socket.emit('set-buttons', {buttons: DEFAULT_BUTTONS});
+                socket.emit('set-name', {
+                    name: lectures[data.key].name
+                });
             }
             else{
                 socket.emit('collapse');
@@ -59,7 +62,7 @@ io.on('connection', function(socket){
         }
     });
     socket.on('button', function(data){
-        if(data.name != null){
+        if(data.name != null && lectures[room] != null){
             if(Date.now() - RATE_LIMIT >= lastClick) {
                 lectures[room].owner.emit('button', {name: data.name});
                 lastClick = Date.now();
@@ -74,7 +77,7 @@ io.on('connection', function(socket){
         }
     });
     socket.on('question', function(data){
-        if(data.text != null){
+        if(data.text != null && lectures[room] != null){
             if(Date.now() - RATE_LIMIT >= lastClick) {
                 lectures[room].owner.emit('question', {text: data.name});
                 lastClick = Date.now();
@@ -84,6 +87,7 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(){
         if(room != null && socket == lectures[room].owner){
             socket.to(room).emit('collapse', {});
+            lectures[room] = undefined;
         }
     });
 });

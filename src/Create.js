@@ -1,5 +1,6 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 export default class Create extends React.Component {
     constructor(props) {
@@ -110,7 +111,7 @@ export default class Create extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Name:
-                        <input type="text" value={this.state.name} onChange={this.handleChange}/>
+                        <TextField hintText=" Your name" value={this.state.name} onChange={this.handleChange}/>
                     </label>
                     <RaisedButton label="SHIT" type="submit" value="Create lecture"/>
                 </form>
