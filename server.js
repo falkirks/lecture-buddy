@@ -69,6 +69,9 @@ io.on('connection', function(socket){
             if(Date.now() - RATE_LIMIT >= lastClick) {
                 lectures[room].owner.emit('button', {name: data.name});
                 lastClick = Date.now();
+                setTimeout((function () {
+                    this.setState({});
+                }).bind(this), RATE_LIMIT + 5);
             }
         }
     });
