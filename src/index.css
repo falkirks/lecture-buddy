@@ -2,6 +2,7 @@ html {
   padding: 0;
   margin: 0;
 }
+
 body {
   margin: 0px;
   display: flex;
@@ -12,7 +13,7 @@ body {
   background: lightgray;
 }
 
-cover{
+cover {
   margin: 0px;
   position: fixed;
   left: 0;
@@ -89,4 +90,9 @@ header2{
 .join-state{
   z-index: 100;
   padding: 30px;
+}
+
+.app-button{
+  height: 20px;
+  width:200; 
 }
