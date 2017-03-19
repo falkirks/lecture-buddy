@@ -84,23 +84,33 @@ export default class Join extends React.Component {
 
 
     render() {
+<<<<<<< HEAD
         const style1 = {margin:5,height:50,fontSize:30}
         const style2 = {margin:5,height:50}
+=======
+        const style ={
+            color: 'white',
+        };
+        const style2 ={
+            display: 'flex',
+            'flex-direction': 'column',
+            width: '100%'
+        };
+
+>>>>>>> d706d208a21cda2ced9b2d1734226d1e06c9ec13
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
                 <div>
-                <header2>Lecture Buddy</header2>
-                <div className="container">
-                    <b>WE JOINED AND ITS {this.state.name}</b>
-                    <br/>
-                    <div>
-                        <ul className="list-group">
+                    <header2>Lecture Buddy</header2>
+                    <div className="join-state">
+                        <h1>{this.state.name}</h1>
+                        <br/>
+                        <div style={style2}>
                             {this.state.buttons.map((btn) => (
-                                <li> < Click name={btn} /> </li>
+                                < Click name={btn} />
                             ))}
-                        </ul>
+                        </div>
                     </div>
-                </div>
                 </div>
             );
         }

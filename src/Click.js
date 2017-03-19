@@ -1,5 +1,11 @@
 import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const style = {
+    margin: 12,
+};
+
 export default class Click extends React.Component {
 
 
@@ -23,7 +29,7 @@ export default class Click extends React.Component {
 
     render() {
         return (
-        <button type="button" className="app-button btn btn-primary" onClick={this.handleClick}>{this.props.name}</button>
+            <RaisedButton style={style} onClick={this.handleClick} label={this.props.name} />
         );
     }
 }

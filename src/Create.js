@@ -5,6 +5,12 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import LinearProgress from 'material-ui/LinearProgress';
+import Dialog from 'material-ui/Dialog';
+
+import FlatButton from 'material-ui/FlatButton';
+
+
+import AddBox from 'material-ui/svg-icons/content/add-box';
 
 export default class Create extends React.Component {
     constructor(props) {
@@ -16,19 +22,24 @@ export default class Create extends React.Component {
             clicks: {},
             clickLog: [],
             questions: [],
-            students: 0
+            students: 0,
+            newQuestion : null,
+            open : false
         };
         this.DISPLAY_DIST = 20*1000;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.removeQuestion = this.removeQuestion.bind(this);
+        this.addQuestion = this.addQuestion.bind(this);
+        this.handleNewQuestion = this.handleNewQuestion.bind(this);
 
         this.keySubmit = this.keySubmit.bind(this);
         this.buttonPressed = this.buttonPressed.bind(this);
         this.questionGot = this.questionGot.bind(this);
         this.buttonsSet = this.buttonsSet.bind(this);
         this.changeStudent = this.changeStudent.bind(this);
+
 
         window.socket.on('set-key', this.keySubmit);
         window.socket.on('set-buttons', this.buttonsSet);
@@ -57,6 +68,17 @@ export default class Create extends React.Component {
             });
             window.socket.emit('set-buttons', {buttons: buttons});
         }
+        console.log(name);
+    }
+
+    addQuestion(name) {
+        var buttons = this.state.buttons;
+        buttons.push(name);
+        this.setState({
+            buttons: buttons,
+            newQuestion: ""
+        });
+        window.socket.emit('set-buttons', {buttons: buttons});
         console.log(name);
     }
 
@@ -133,6 +155,10 @@ export default class Create extends React.Component {
         this.setState({name: event.target.value});
     }
 
+    handleNewQuestion(event) {
+        this.setState({newQuestion: event.target.value});
+    }
+
 
 
     handleSubmit(event) {
@@ -143,48 +169,83 @@ export default class Create extends React.Component {
         event.preventDefault();
     }
 
+    handleOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
     render() {
+        const actions = [
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onTouchTap={(function() {
+                    this.handleClose();
+                    this.addQuestion(this.state.newQuestion);
+                }).bind(this)}
+            />,
+        ];
         var style = {
             height: '20px'
         };
-        var style2 = {
-
-        };
-        var style3 = {
-
-        };
-
 
         var validClicks = [];
         for(var i = 0; i < this.state.buttons.length; i++){
             validClicks.push({name: this.state.buttons[i], amount: 0});
         }
         for(i = 0; i < this.state.clickLog.length; i++){
-            console.log(this.state.clickLog[i]);
             if(this.state.clickLog[i].time + this.DISPLAY_DIST >= Date.now()){
                 validClicks[this.state.buttons.indexOf(this.state.clickLog[i].name)].amount++;
             }
         }
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
+
             <div>
                 <header2>Lecture Buddy</header2>
-                <h1>WE GOT DAT KEY AND ITS {this.state.key}</h1>
+                <h1>Code  <code>{this.state.key}</code></h1>
                 <div>
                     {validClicks.map((click) => (
                         <div>
                             <AppBar
-                                title={<span style={style3}>{click.name}</span>}
-                                iconElementRight={<span style={style3}> <IconButton><NavigationClose /></IconButton></span>}
+                                title={<span>{click.name}</span>}
+                                iconElementRight={<span> <IconButton><NavigationClose /></IconButton></span>}
                                 onRightIconButtonTouchTap={(function(event){ this.removeQuestion(click.name) }).bind(this)}
                                 iconElementLeft={<span></span>}
-                                style={style2}
                             />
                             <LinearProgress color="#FF4081" mode="determinate" value={click.amount} max={this.state.students} style={style} />
                             <br />
                         </div>
                     ))}
                 </div>
+                <div>
+                    <IconButton tooltip="SVG Icon">
+                        <AddBox onTouchTap= {this.handleOpen}/>
+                    </IconButton>
+                </div>
+
+
+
+                <div>
+                    <Dialog
+                        title="New Button"
+                        actions={actions}
+                        modal={false}
+                        open={this.state.open}
+                        onRequestClose={this.handleClose}>
+                        <TextField
+                        hintText="your text"
+                        value={this.state.newQuestion}
+
+                        onChange={this.handleNewQuestion}
+                        />
+                    </Dialog>
+                </div>
+
             </div>);
         }
         else{
