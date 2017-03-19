@@ -181,6 +181,7 @@ export default class Create extends React.Component {
     render() {
         const actions = [
             <FlatButton
+                className='ok-button'
                 label="Ok"
                 primary={true}
                 keyboardFocused={true}
