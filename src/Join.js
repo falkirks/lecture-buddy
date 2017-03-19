@@ -92,7 +92,6 @@ export default class Join extends React.Component {
                 <header2>Lecture Buddy</header2>
                 <div className="container">
                     <b>WE JOINED AND ITS {this.state.name}</b>
-
                     <br/>
                     <div>
                         <ul className="list-group">
