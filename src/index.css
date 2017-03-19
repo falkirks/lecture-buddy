@@ -81,3 +81,9 @@ logo svg{
   justify-content: center;
   z-index: 100;
 }
+
+.join-state{
+  z-index: 100;
+  background: #fff;
+  padding: 30px;
+}

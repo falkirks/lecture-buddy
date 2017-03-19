@@ -11,8 +11,8 @@ export default class Home extends React.Component {
     render() {
         return (
         <div className="home-buttons">
-            <RaisedButton backgroundColor='#f44336'style={style}><a href="#" onClick={e => this.props.onItemSelect('join')}>Join</a></RaisedButton>
-            <RaisedButton backgroundColor='#26a69a'style={style}><a href="#" onClick={e => this.props.onItemSelect('create')}>Create</a></RaisedButton>
+            <RaisedButton backgroundColor='#f44336'style={style} onClick={e => this.props.onItemSelect('join')}>Join</RaisedButton>
+            <RaisedButton backgroundColor='#26a69a'style={style}  onClick={e => this.props.onItemSelect('create')}>Create</RaisedButton>
         </div>);
     }
 }

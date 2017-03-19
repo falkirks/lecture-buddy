@@ -155,12 +155,14 @@ export default class Create extends React.Component {
         }
         else{
             return (
+                <div className="join-state">
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         <TextField hintText="Lecture Name" value={this.state.name} onChange={this.handleChange}/>
                     </label>
                     <RaisedButton label="Create" type="submit" value="Create lecture"/>
                 </form>
+                </div>
 
             );
         }

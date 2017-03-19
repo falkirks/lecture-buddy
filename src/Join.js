@@ -83,7 +83,9 @@ export default class Join extends React.Component {
     };
 
 
-    render() {
+    render() {const style={
+        color: 'white',
+    }
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
                 <div className="container">
@@ -104,17 +106,17 @@ export default class Join extends React.Component {
         }
         else{
             return (
-                <div>
-                        <Snackbar
-                            open={this.state.open}
-                            message="Your PIN-CODE SUCKS"
-                            autoHideDuration={4000}
-                            onRequestClose={this.handleRequestClose}
-                        />
+                <div className="join-state">
+                    <Snackbar
+                        open={this.state.open}
+                        message="Your PIN-CODE SUCKS"
+                        autoHideDuration={4000}
+                        onRequestClose={this.handleRequestClose}
+                    />
 
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        <TextField hintText="Lecture Key" value={this.state.key} onChange={this.handleChange}/>
+                        <TextField inputStyle="color:white;" hintText="Lecture Key" value={this.state.key} onChange={this.handleChange}/>
                     </label>
                     <RaisedButton label="Join" type="submit" value="Join lecture"/>
                 </form>
