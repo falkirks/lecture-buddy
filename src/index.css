@@ -32,6 +32,12 @@ cover {
   background-image: url(/wall.jpg) !important;
 }
 
+.harrass{
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center ;
+}
+
 .topic{
   padding: 10px;
   margin-left: 15px;
@@ -180,5 +186,9 @@ div span{
   div span{
     font-weight: 400 !important;
     font-size: 14px;
+  }
+  .harrass{
+    width:100%;
+    font-size:18px;
   }
 }
