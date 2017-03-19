@@ -219,7 +219,7 @@ export default class Create extends React.Component {
                                     onRightIconButtonTouchTap={(function(event){ this.removeQuestion(click.name) }).bind(this)}
                                     iconElementLeft={<span></span>}
                                 />
-                                <LinearProgress color="#FF4081" mode="determinate" value={click.amount} max={this.state.students} style={style} />
+                                <LinearProgress color="#FF4081" mode="determinate" value={click.amount} max={Math.max(this.state.students, 1)} style={style} />
                                 <br />
                             </div>
                         ))}
