@@ -162,7 +162,7 @@ export default class Create extends React.Component {
 
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.name);
+        //alert('A name was submitted: ' + this.state.name);
         window.socket.emit('create', {
             name: this.state.name
         });
