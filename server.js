@@ -36,14 +36,15 @@ io.on('connection', function(socket){
             lectures[key] = {
                 owner: socket,
                 //geo: data.geo,
-                name: data.name
+                name: data.name,
+                buttons: DEFAULT_BUTTONS
             };
             room = key;
             socket.join(key);
             socket.emit('set-key', {
                key: key
             });
-            socket.emit('set-buttons', {buttons: DEFAULT_BUTTONS});
+            socket.emit('set-buttons', {buttons: lectures[key].buttons});
         }
     });
     socket.on('join', function(data){
@@ -51,7 +52,7 @@ io.on('connection', function(socket){
             if(lectures[data.key]){
                 socket.join(data.key);
                 room = data.key;
-                socket.emit('set-buttons', {buttons: DEFAULT_BUTTONS});
+                socket.emit('set-buttons', {buttons: lectures[data.key].buttons});
                 socket.emit('set-name', {
                     name: lectures[data.key].name
                 });
@@ -75,6 +76,7 @@ io.on('connection', function(socket){
     // LATER
     socket.on('set-buttons', function(data){
         if(data.buttons != null && socket == lectures[room].owner){
+            lectures[room].buttons = data.buttons;
             socket.to(room).emit('set-buttons', {buttons: data.buttons});
         }
     });

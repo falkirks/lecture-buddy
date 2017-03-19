@@ -1,7 +1,9 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import LinearProgress from 'material-ui/LinearProgress';
 
 export default class Create extends React.Component {
@@ -20,6 +22,7 @@ export default class Create extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.removeQuestion = this.removeQuestion.bind(this);
 
         this.keySubmit = this.keySubmit.bind(this);
         this.buttonPressed = this.buttonPressed.bind(this);
@@ -42,6 +45,19 @@ export default class Create extends React.Component {
         else{
             alert("YOU FUCKED UP!");
         }
+    }
+
+    removeQuestion(name){
+        var index = this.state.buttons.indexOf(name);
+        if (index > -1) {
+            var buttons = this.state.buttons;
+            buttons.splice(index, 1);
+            this.setState({
+                buttons: buttons
+            });
+            window.socket.emit('set-buttons', {buttons: buttons});
+        }
+        console.log(name);
     }
 
     buttonPressed(data){
@@ -113,6 +129,8 @@ export default class Create extends React.Component {
         this.setState({name: event.target.value});
     }
 
+
+
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.name);
         window.socket.emit('create', {
@@ -125,6 +143,13 @@ export default class Create extends React.Component {
         var style = {
             height: '20px'
         };
+        var style2 = {
+
+        };
+        var style3 = {
+
+        };
+
 
         var validClicks = [];
         for(var i = 0; i < this.state.buttons.length; i++){
@@ -142,12 +167,15 @@ export default class Create extends React.Component {
                 <div>
                     {validClicks.map((click) => (
                         <div>
-                            <Card>
-                                <CardHeader
-                                    title={click.name}
-                                />
-                                <LinearProgress mode="determinate" value={click.amount} max={this.state.students} style={style} />
-                            </Card>
+                            <AppBar
+                                title={<span style={style3}>{click.name}</span>}
+                                iconElementRight={<span style={style3}> <IconButton><NavigationClose /></IconButton></span>}
+                                onRightIconButtonTouchTap={(function(event){ this.removeQuestion(click.name) }).bind(this)}
+                                iconElementLeft={<span></span>}
+                                style={style2}
+                            />
+                            <LinearProgress color="#FF4081" mode="determinate" value={click.amount} max={this.state.students} style={style} />
+                            <br />
                         </div>
                     ))}
                 </div>
