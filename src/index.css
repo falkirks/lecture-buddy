@@ -101,7 +101,6 @@ form{
   flex-direction: column;
 }
 
-<<<<<<< HEAD
 /*-----------MEDIA-----------*/
 @media screen and (max-width:490px) {
   html,header,cover, body {
@@ -109,9 +108,4 @@ form{
     padding:0;
     overflow: hidden;
   }
-=======
-.app-button{
-  height: 20px;
-  width: 200px;
->>>>>>> d706d208a21cda2ced9b2d1734226d1e06c9ec13
 }

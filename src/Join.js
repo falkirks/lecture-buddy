@@ -84,10 +84,6 @@ export default class Join extends React.Component {
 
 
     render() {
-<<<<<<< HEAD
-        const style1 = {margin:5,height:50,fontSize:30}
-        const style2 = {margin:5,height:50}
-=======
         const style ={
             color: 'white',
         };
@@ -97,7 +93,6 @@ export default class Join extends React.Component {
             width: '100%'
         };
 
->>>>>>> d706d208a21cda2ced9b2d1734226d1e06c9ec13
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (
                 <div>
@@ -128,9 +123,9 @@ export default class Join extends React.Component {
 
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        <TextField style={style1} hintText="Lecture Key" value={this.state.key} onChange={this.handleChange}/>
+                        <TextField style={{margin:5, height:50, fontSize:30, lineHeight:1}} hintText="Lecture Key" value={this.state.key} onChange={this.handleChange}/>
                     </label>
-                    <RaisedButton style={style2} label="Join" type="submit" value="Join lecture"/>
+                    <RaisedButton style={{margin:5,height:50}} label="Join" type="submit" value="Join lecture"/>
                 </form>
                 </div>
             </div>
