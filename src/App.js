@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Home from './Home';
 import Create from './Create';
 import Join from './Join';
+import Wall from './Wall';
 
 import {
     SocketProvider,
@@ -35,6 +36,7 @@ class App extends React.Component {
             {this.state.pageId == 'home' ? <Home onItemSelect={this._onItemSelect} /> : ''}
             {this.state.pageId == 'join' ? <Join onItemSelect={this._onItemSelect} /> : ''}
             {this.state.pageId == 'create' ? <Create onItemSelect={this._onItemSelect} /> : ''}
+            {this.state.pageId == 'wall' ? <Wall onItemSelect={this._onItemSelect} /> : ''}
           </div>
         </MuiThemeProvider>
     );

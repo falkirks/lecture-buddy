@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Click from './Click';
 import Snackbar from 'material-ui/Snackbar';
 import TextField from 'material-ui/TextField';
+import BadWords from './Badwords';
 
 export default class Join extends React.Component {
     constructor(props) {
@@ -31,6 +32,8 @@ export default class Join extends React.Component {
         window.socket.on('set-name', this.receiveName);
         window.socket.on('collapse', this.collapse);
 
+        console.log(BadWords);
+
     }
 
     receiveName(data){
@@ -54,11 +57,19 @@ export default class Join extends React.Component {
     }
 
     sendQuestion(event){
+        event.preventDefault();
         if(this.state.question != ''){
+            var lower = this.state.question.toLowerCase();
+            for(var i = 0; i < BadWords.length; i++){
+                if(lower.includes(BadWords[i])){
+                    this.props.onItemSelect('wall');
+                    return;
+                }
+            }
+
             window.socket.emit('question', {text: this.state.question});
             this.setState({question: ''});
         }
-        event.preventDefault();
     }
 
     collapse(data){

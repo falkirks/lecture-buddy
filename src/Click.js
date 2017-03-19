@@ -1,6 +1,7 @@
 import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
+import BadWords from './Badwords';
 
 const style = {
     margin: 12,

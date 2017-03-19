@@ -28,6 +28,9 @@ cover {
   filter: blur(1px);
   z-index: -1000;
 }
+.wall{
+  background-image: url(/wall.jpg) !important;
+}
 
 .topic{
   padding: 10px;
