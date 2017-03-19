@@ -1,6 +1,8 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Click from './Click';
+import Snackbar from 'material-ui/Snackbar';
+import TextField from 'material-ui/TextField';
 
 export default class Join extends React.Component {
     constructor(props) {
@@ -8,8 +10,11 @@ export default class Join extends React.Component {
         this.state = {
             name: '',
             key: '',
-            buttons: []
+            buttons: [],
+            open : false
         };
+
+
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,7 +50,8 @@ export default class Join extends React.Component {
     }
 
     collapse(data){
-        alert("That wasn't valid.");
+        this.handleTouchTap();
+        /*alert("That wasn't valid.");*/
         this.setState({
             key: ""
         });
@@ -56,12 +62,26 @@ export default class Join extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('A key was submitted: ' + this.state.key);
+        // alert('A key was submitted: ' + this.state.key);
         window.socket.emit('join', {
             key: this.state.key
         });
         event.preventDefault();
     }
+
+
+    handleTouchTap = () => {
+        this.setState({
+            open: true,
+        });
+    };
+
+    handleRequestClose = () => {
+        this.setState({
+            open: false,
+        });
+    };
+
 
     render() {
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
@@ -84,13 +104,21 @@ export default class Join extends React.Component {
         }
         else{
             return (
+                <div>
+                        <Snackbar
+                            open={this.state.open}
+                            message="Your PIN-CODE SUCKS"
+                            autoHideDuration={4000}
+                            onRequestClose={this.handleRequestClose}
+                        />
+
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Key:
-                        <input type="text" value={this.state.key} onChange={this.handleChange}/>
+                        <TextField hintText="Lecture Key" value={this.state.key} onChange={this.handleChange}/>
                     </label>
                     <RaisedButton label="Join" type="submit" value="Join lecture"/>
                 </form>
+                </div>
             );
         }
     }

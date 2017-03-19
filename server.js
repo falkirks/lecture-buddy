@@ -55,6 +55,8 @@ io.on('connection', function(socket){
                 socket.emit('set-name', {
                     name: lectures[data.key].name
                 });
+
+                lectures[room].owner.emit('student', {action: 'add'});
             }
             else{
                 socket.emit('collapse');
@@ -85,9 +87,14 @@ io.on('connection', function(socket){
         }
     });
     socket.on('disconnect', function(){
-        if(room != null && socket == lectures[room].owner){
-            socket.to(room).emit('collapse', {});
-            lectures[room] = undefined;
+        if(room != null && lectures[room] != null){
+            if(socket == lectures[room].owner){
+                socket.to(room).emit('collapse', {});
+                lectures[room] = undefined;
+            }
+            else{
+                lectures[room].owner.emit('student', {action: 'remove'});
+            }
         }
     });
 });
