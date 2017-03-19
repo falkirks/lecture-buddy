@@ -14,7 +14,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #000000;
+  color: #ffffff;
 }
 
 
@@ -26,6 +26,10 @@ header {
   padding: 1rem;
   background-color:lightseagreen;
   z-index:10;
+}
+logo svg{
+  height: 30px;
+  width: 30px;
 }
 
 .container{
