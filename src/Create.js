@@ -7,7 +7,8 @@ export default class Create extends React.Component {
         this.state = {
             name: '',
             key: '',
-            click: [],
+            clicks: {},
+            clickLog: [],
             questions: []
         };
 
@@ -15,18 +16,59 @@ export default class Create extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.keySubmit = this.keySubmit.bind(this);
-        //this.buttonPressed = this.buttonPressed.bind(this);
-        //this.questionGot = this.questionGot.bind(this);
+        this.buttonPressed = this.buttonPressed.bind(this);
+        this.questionGot = this.questionGot.bind(this);
 
         window.socket.on('set-key', this.keySubmit);
-        //window.socket.on('button', this.buttonPressed);
-        //window.socket.on('question', this.questionGot);
+        window.socket.on('button', this.buttonPressed);
+        window.socket.on('question', this.questionGot);
 
     }
 
     keySubmit(data){
         if(data.key != null) {
             this.setState({key: data.key});
+        }
+        else{
+            alert("YOU FUCKED UP!");
+        }
+    }
+
+    buttonPressed(data){
+        if(data.name != null) {
+            var clicks = this.state.clicks;
+            if(clicks[data.name] == null){
+                clicks[data.name] = 0;
+            }
+            clicks[data.name]++;
+
+            var clickLog = this.state.clickLog;
+            clickLog.push({
+                name: data.name,
+                time: Date.now()
+            });
+
+            this.setState({
+                clicks: clicks,
+                clickLog: clickLog
+            });
+        }
+        else{
+            alert("YOU FUCKED UP!");
+        }
+    }
+
+    questionGot(data){
+        if(data.text != null) {
+            var questions = this.state.questions;
+            questions.push({
+                text: data.text,
+                time: Date.now()
+            });
+
+            this.setState({
+                questions: questions
+            });
         }
         else{
             alert("YOU FUCKED UP!");
