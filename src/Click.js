@@ -2,8 +2,14 @@ import React from 'react';
 
 export default class Click extends React.Component {
 
+    constructor(props) {
+        super(props);
 
-    handleClick(){
+        this.handleClick = this._handleClick.bind(this)
+    }
+
+
+    _handleClick(){
         window.socket.emit('button', {
             name: this.props.name
         });
