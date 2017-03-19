@@ -117,8 +117,7 @@ export default class Create extends React.Component {
             return (
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Name:
-                        <TextField hintText=" Your name" value={this.state.name} onChange={this.handleChange}/>
+                        <TextField hintText="Lecture Name" value={this.state.name} onChange={this.handleChange}/>
                     </label>
                     <RaisedButton label="SHIT" type="submit" value="Create lecture"/>
                 </form>
