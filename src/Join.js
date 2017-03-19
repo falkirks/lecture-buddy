@@ -151,7 +151,7 @@ export default class Join extends React.Component {
                 <div className="join-state">
                     <Snackbar
                         open={this.state.open}
-                        message="Your PIN-CODE SUCKS"
+                        message="Lecture session does not exist"
                         autoHideDuration={4000}
                         onRequestClose={this.handleRequestClose}
                     />
