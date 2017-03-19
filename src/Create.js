@@ -104,17 +104,24 @@ export default class Create extends React.Component {
 
     render() {
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
-            return (<b>WE GOT DAT KEY AND ITS {this.state.key}</b>);
+            return (<div>
+                <h1>WE GOT DAT KEY AND ITS {this.state.key}</h1>
+                <ul>
+                    {this.state.clickLog.map((click) => (
+                        <li>{click.name}</li>
+                    ))}
+                </ul>
+            </div>);
         }
         else{
             return (
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Name:
-                        <TextField hintText=" Your name" value={this.state.name} onChange={this.handleChange}/>
+                        <TextField hintText="Lecture Name" value={this.state.name} onChange={this.handleChange}/>
                     </label>
                     <RaisedButton label="SHIT" type="submit" value="Create lecture"/>
                 </form>
+
             );
         }
     }

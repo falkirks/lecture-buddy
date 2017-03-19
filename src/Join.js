@@ -2,6 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Click from './Click';
 import Snackbar from 'material-ui/Snackbar';
+import TextField from 'material-ui/TextField';
 
 export default class Join extends React.Component {
     constructor(props) {
@@ -110,13 +111,13 @@ export default class Join extends React.Component {
                             autoHideDuration={4000}
                             onRequestClose={this.handleRequestClose}
                         />
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            Key:
-                            <input type="text" value={this.state.key} onChange={this.handleChange}/>
-                        </label>
-                        <RaisedButton label="Join" type="submit" value="Join lecture"/>
-                    </form>
+
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        <TextField hintText="Lecture Key" value={this.state.key} onChange={this.handleChange}/>
+                    </label>
+                    <RaisedButton label="Join" type="submit" value="Join lecture"/>
+                </form>
                 </div>
             );
         }
