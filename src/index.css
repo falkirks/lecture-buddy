@@ -133,8 +133,8 @@ div span{
   z-index: 0 !important;
 }
 
-span{
-  color: rgb(0, 188, 212);
+.dialog {
+  color: #00bcd4 !important;
 }
 /*-----------MEDIA-----------*/
 @media screen and (max-width:490px) {

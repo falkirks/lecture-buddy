@@ -236,6 +236,7 @@ export default class Create extends React.Component {
 
                 <div>
                     <Dialog
+                        className = "dialog"
                         title="New Button"
                         actions={actions}
                         modal={false}
