@@ -124,7 +124,7 @@ export default class Join extends React.Component {
                         <br/>
                         <form onSubmit={this.sendQuestion}>
                             <label>
-                                <TextField hintText="" value={this.state.question} onChange={this.handleQuestionChange}/>
+                                <TextField hintText="enter your question here" value={this.state.question} onChange={this.handleQuestionChange}/>
                             </label>
                             <RaisedButton label="Send" type="submit" value=""/>
                         </form>

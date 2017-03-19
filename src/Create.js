@@ -7,6 +7,8 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import LinearProgress from 'material-ui/LinearProgress';
 import Dialog from 'material-ui/Dialog';
 
+import Snackbar from 'material-ui/Snackbar';
+
 import FlatButton from 'material-ui/FlatButton';
 
 
@@ -21,10 +23,11 @@ export default class Create extends React.Component {
             buttons: [],
             clicks: {},
             clickLog: [],
-            questions: [],
+            questions: [""],
             students: 0,
             newQuestion : null,
-            open : false
+            open : false,
+            openSnackBar : false
         };
         this.DISPLAY_DIST = 15*1000;
 
@@ -122,11 +125,11 @@ export default class Create extends React.Component {
                 text: data.text,
                 time: Date.now()
             });
-
             this.setState({
                 questions: questions
             });
-            alert(data.text);
+            this.handleRequestOpen();
+            // alert(data.text);
         }
         else{
             alert("YOU FUCKED UP!");
@@ -182,6 +185,13 @@ export default class Create extends React.Component {
     handleClose = () => {
         this.setState({open: false});
     };
+
+    handleRequestClose = () => {
+        this.setState({openSnackBar: false})
+    }
+    handleRequestOpen = () => {
+        this.setState({openSnackBar: true})
+    }
 
     render() {
         const actions = [
@@ -261,6 +271,12 @@ export default class Create extends React.Component {
                         />
                     </Dialog>
                 </div>
+                <Snackbar
+                    open={this.state.openSnackBar}
+                    message={this.state.questions[this.state.questions.length - 1].text}
+                    autoHideDuration={5000}
+                    onRequestClose={this.handleRequestClose}
+                />
 
             </div>);
         }
