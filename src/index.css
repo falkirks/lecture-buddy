@@ -115,7 +115,7 @@ div span{
     margin-top: 55px!important;
     margin-bottom: 10px !important;
     display: block!important;
-    height: 50vh!important;
+    height: 75vh!important;
     width: 50vw!important;
     margin: 0 auto;
     overflow: hidden;
@@ -124,7 +124,7 @@ div span{
 .gen-container {
     display: block !important;
     overflow-y: scroll !important;
-    height: 65vh !important;
+    height: 80vh !important;
     width: 100% !important;
 }
 
@@ -136,28 +136,6 @@ div span{
 .ok-button div span{
   color: #00bcd4;
 }
-
-/*Scroll bar*/
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
-    box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: rgba(0,0,0,0.8); 
-    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.5); 
-    box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
-}
-::-webkit-scrollbar-thumb:window-inactive {
-    background: rgb(255, 255, 255, 0.5); 
-}
-
 /*-----------MEDIA-----------*/
 @media screen and (max-width:490px) {
   .options-container{
