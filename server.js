@@ -55,6 +55,8 @@ io.on('connection', function(socket){
                 socket.emit('set-name', {
                     name: lectures[data.key].name
                 });
+
+                lectures[room].owner.emit('student', {});
             }
             else{
                 socket.emit('collapse');
