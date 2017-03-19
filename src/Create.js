@@ -26,7 +26,7 @@ export default class Create extends React.Component {
             newQuestion : null,
             open : false
         };
-        this.DISPLAY_DIST = 20*1000;
+        this.DISPLAY_DIST = 15*1000;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,6 +61,11 @@ export default class Create extends React.Component {
     removeQuestion(name){
         var index = this.state.buttons.indexOf(name);
         if (index > -1) {
+            if(this.state.buttons.length == 1){
+                //alert("Can't remove last question.");
+                return;
+            }
+
             var buttons = this.state.buttons;
             buttons.splice(index, 1);
             this.setState({
@@ -121,6 +126,7 @@ export default class Create extends React.Component {
             this.setState({
                 questions: questions
             });
+            alert(data.text);
         }
         else{
             alert("YOU FUCKED UP!");
@@ -205,6 +211,11 @@ export default class Create extends React.Component {
             }
         }
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
+            var rightIcon = <span> <IconButton><NavigationClose /></IconButton></span>;
+            if(this.state.buttons.length == 1){
+                rightIcon = <span></span>;
+            }
+
             return (
 
             <div style={{width:'100vw',height:'100vh'}}>
@@ -216,7 +227,7 @@ export default class Create extends React.Component {
                             <div>
                                 <AppBar className="app-bar"
                                     title={<span>{click.name}</span>}
-                                    iconElementRight={<span> <IconButton><NavigationClose /></IconButton></span>}
+                                    iconElementRight={rightIcon}
                                     onRightIconButtonTouchTap={(function(event){ this.removeQuestion(click.name) }).bind(this)}
                                     iconElementLeft={<span></span>}
                                 />
