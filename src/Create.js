@@ -224,7 +224,7 @@ export default class Create extends React.Component {
 
             <div>
                 <header2>Lecture Buddy</header2>
-                <h1>WE GOT DAT KEY AND ITS {this.state.key}</h1>
+                <h1>Code  <code>{this.state.key}</code></h1>
                 <div>
                     {validClicks.map((click) => (
                         <div>
