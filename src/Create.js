@@ -190,7 +190,8 @@ export default class Create extends React.Component {
             />,
         ];
         var style = {
-            height: '20px'
+            height: '20px',
+            width: '100%'
         };
 
         var validClicks = [];
@@ -207,21 +208,24 @@ export default class Create extends React.Component {
 
             <div>
                 <header2>Lecture Buddy</header2>
-                <h1>Code  <code>{this.state.key}</code></h1>
-                <div className="gen-container">
-                    {validClicks.map((click) => (
-                        <div>
-                            <AppBar className="app-bar"
-                                title={<span>{click.name}</span>}
-                                iconElementRight={<span> <IconButton><NavigationClose /></IconButton></span>}
-                                onRightIconButtonTouchTap={(function(event){ this.removeQuestion(click.name) }).bind(this)}
-                                iconElementLeft={<span></span>}
-                            />
-                            <LinearProgress color="#FF4081" mode="determinate" value={click.amount} max={this.state.students} style={style} />
-                            <br />
-                        </div>
-                    ))}
+                <div className="options-container">
+                    <h1 style={{textAlign:'center',width:'100%'}}>Code  <code>{this.state.key}</code></h1>
+                    <div className="gen-container">
+                        {validClicks.map((click) => (
+                            <div>
+                                <AppBar className="app-bar"
+                                    title={<span>{click.name}</span>}
+                                    iconElementRight={<span> <IconButton><NavigationClose /></IconButton></span>}
+                                    onRightIconButtonTouchTap={(function(event){ this.removeQuestion(click.name) }).bind(this)}
+                                    iconElementLeft={<span></span>}
+                                />
+                                <LinearProgress color="#FF4081" mode="determinate" value={click.amount} max={this.state.students} style={style} />
+                                <br />
+                            </div>
+                        ))}
+                    </div>
                 </div>
+
                 <div>
                     <IconButton tooltip="SVG Icon">
                         <AddBox onTouchTap= {this.handleOpen}/>

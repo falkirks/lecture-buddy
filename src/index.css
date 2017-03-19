@@ -111,12 +111,25 @@ div span{
   font-weight: 700 !important;
 }
 
+.options-container{
+  margin-top: 50px !important;
+  display: block !important;
+  height: 70vh !important;
+  width: 80vw !important;
+  margin: 0 auto;
+}
+
 .gen-container{
   display: block !important;
   overflow-y: scroll !important;
-  height: 50vh;
+  height: 50vh !important;
+  width: 100% !important;
 }
 
+.app-bar{
+  width: 100% !important;
+  z-index: 0 !important;
+}
 /*-----------MEDIA-----------*/
 @media screen and (max-width:490px) {
   html,cover, body {
@@ -136,12 +149,12 @@ div span{
     margin-left: 0;
   }
   .gen-container{
-    width:90%;
+    width:80%;
     margin: 0 auto;
     z-index:0;
   }
   .app-bar{
-    max-width: 90%;
+    max-width: 80%;
     margin: 0 auto;
     font-size: 18px;
   }
