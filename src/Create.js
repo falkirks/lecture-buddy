@@ -1,6 +1,8 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import LinearProgress from 'material-ui/LinearProgress';
 
 export default class Create extends React.Component {
     constructor(props) {
@@ -11,8 +13,10 @@ export default class Create extends React.Component {
             buttons: [],
             clicks: {},
             clickLog: [],
-            questions: []
+            questions: [],
+            students: 0
         };
+        this.DISPLAY_DIST = 20*1000;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,11 +25,13 @@ export default class Create extends React.Component {
         this.buttonPressed = this.buttonPressed.bind(this);
         this.questionGot = this.questionGot.bind(this);
         this.buttonsSet = this.buttonsSet.bind(this);
+        this.changeStudent = this.changeStudent.bind(this);
 
         window.socket.on('set-key', this.keySubmit);
         window.socket.on('set-buttons', this.buttonsSet);
         window.socket.on('button', this.buttonPressed);
         window.socket.on('question', this.questionGot);
+        window.socket.on('student', this.changeStudent);
 
     }
 
@@ -90,6 +96,19 @@ export default class Create extends React.Component {
         }
     }
 
+    changeStudent(data){
+        if(data.action == 'remove'){
+            this.setState({
+                students: this.state.students-1
+            });
+        }
+        else{
+            this.setState({
+                students: this.state.students+1
+            });
+        }
+    }
+
     handleChange(event) {
         this.setState({name: event.target.value});
     }
@@ -103,14 +122,35 @@ export default class Create extends React.Component {
     }
 
     render() {
+        var style = {
+            height: '20px'
+        };
+
+        var validClicks = [];
+        for(var i = 0; i < this.state.buttons.length; i++){
+            validClicks.push({name: this.state.buttons[i], amount: 0});
+        }
+        for(i = 0; i < this.state.clickLog.length; i++){
+            console.log(this.state.clickLog[i]);
+            if(this.state.clickLog[i].time + this.DISPLAY_DIST >= Date.now()){
+                validClicks[this.state.buttons.indexOf(this.state.clickLog[i].name)].amount++;
+            }
+        }
         if(this.state.name != '' && this.state.key != '' && this.state.buttons.length > 0) {
             return (<div>
                 <h1>WE GOT DAT KEY AND ITS {this.state.key}</h1>
-                <ul>
-                    {this.state.clickLog.map((click) => (
-                        <li>{click.name}</li>
+                <div>
+                    {validClicks.map((click) => (
+                        <div>
+                            <Card>
+                                <CardHeader
+                                    title={click.name}
+                                />
+                                <LinearProgress mode="determinate" value={click.amount} max={this.state.students} style={style} />
+                            </Card>
+                        </div>
                     ))}
-                </ul>
+                </div>
             </div>);
         }
         else{
