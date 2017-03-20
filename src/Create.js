@@ -219,7 +219,7 @@ export default class Create extends React.Component {
             validClicks.push({name: this.state.buttons[i], amount: 0});
         }
         for(i = 0; i < this.state.clickLog.length; i++){
-            if(this.state.clickLog[i].time + this.DISPLAY_DIST >= Date.now()){
+            if(this.state.buttons.indexOf(this.state.clickLog[i].name) != -1 && this.state.clickLog[i].time + this.DISPLAY_DIST >= Date.now()){
                 validClicks[this.state.buttons.indexOf(this.state.clickLog[i].name)].amount++;
             }
         }
