@@ -9,11 +9,12 @@
     "path": "^0.12.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-scripts": "0.9.4",
+    "react-scripts": "1.0.0",
     "react-tap-event-plugin": "^2.0.1",
     "shortid": "^2.2.8",
-    "socket.io": "^1.7.3",
-    "socket.io-react": "^1.1.2"
+    "socket.io": "^2.0.2",
+    "socket.io-react": "^1.1.2",
+    "snyk": "^1.41.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -23,9 +24,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "postinstall": "npm run build",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "watch": {
     "build": "src/"
-  }
+  },
+  "snyk": true
 }
